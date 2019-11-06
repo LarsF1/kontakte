@@ -55,7 +55,21 @@
       methods: {
           deleteKontakt(element){
             console.log(element);
-          }
+            this.axios.post('/api/index.php',
+              {
+                  id: 'liste',
+                  func: 'loeschen',
+                  kid: element.kid
+              }
+            ).catch(error => {
+              console.log(error);
+            });
+            data = data.filter(function(item) {
+                for(i = 0; i < data.length; i++){
+                  
+                }
+            });
+        }
       },
       computed: {
           checkData() {
