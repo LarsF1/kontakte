@@ -17,7 +17,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><router-link class="nav-link" to="/">Kontakte</router-link></li>
+                        <li class="nav-item"><router-link class="nav-link" to="/" exact>Kontakte</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" to="/liste">Kontakte erfassen</router-link></li>
                     </ul>
                 </div>
@@ -38,4 +38,9 @@
 
 <style>
 .nav-tabs .nav-link { color: #495057} .nav-tabs .nav-link.active { color:#dc3545} table.tstacked * { box-sizing:border-box; } table.tstacked { width:100%; } table.tstacked, table.tstacked td, table.tstacked tr, table.tstacked th { border:2px solid black; border-collapse: collapse; text-align: left; } table.tstacked td, table.tstacked th { padding:0.5em; } table.tstacked th { background:#eee; font-weight: bold; } @media screen and (max-width:700px) { table.tstacked, table.tstacked tr, table.tstacked td { padding:0; border:1px solid black; } table.tstacked { border:none; } table.tstacked thead { display:none; } table.tstacked tr { float: left; width: 100%; margin-bottom: 2em; } table.tstacked td { float: left; width: 100%; padding:1em; word-break: break-all; } table.tstacked td::before { content:attr(data-label); background: #eee; border-right:2px solid black; width: 45%; float:left; padding:1em; font-weight: bold; margin:-1em 1em -1em -1em; } }
+ nav li.router-link-active,
+ nav li.router-link-exact-active {
+   background-color: indianred;
+   cursor: pointer;
+ }
 </style>

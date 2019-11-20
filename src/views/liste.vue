@@ -1,4 +1,5 @@
 <template>
+<div v-if="checkData">
   <table class="tstacked">
         <thead>
             <tr>
@@ -29,6 +30,10 @@
             </tr>
         </tbody>
     </table>
+    </div>
+    <div v-else>
+        Keine Kontakte vorhanden...
+    </div>
 </template>
 
 <script>
@@ -54,21 +59,27 @@
       },
       methods: {
           deleteKontakt(element){
-            console.log(element);
-            this.axios.post('/api/index.php',
+           this.$dialog.confirm('Wollen Sie den Kontakt wirklich löschen?', {okText: 'Ja', cancelText: 'Nein'})
+           .then(dialog => {
+              console.log(dialog);
+              console.log(element);
+              this.axios.post('/api/index.php',
               {
                   id: 'liste',
                   func: 'loeschen',
                   kid: element.kid
               }
-            ).catch(error => {
+              ).then(response => {
+                this.data = this.data.filter(el => el.kid !== element.kid);
+                console.log(response);
+              }).catch(error => {
+                console.log(error);
+              });
+            }).catch( error => {
               console.log(error);
+              console.log('Löschen abgebrochen');
             });
-            data = data.filter(function(item) {
-                for(i = 0; i < data.length; i++){
-                  
-                }
-            });
+
         }
       },
       computed: {
